@@ -46,6 +46,7 @@ public class Main {
         int newRandomNumber = 0;
 
         for (int i = 0; i < rows; i++) {
+            //check is not last row
             if (i < rows - 1) {
                 for (int j = 0; j < columns; j++) {
                     //check if randomNumber is in list or is equal to zero and generate new random number
@@ -55,16 +56,17 @@ public class Main {
                     }
                     if (!alreadyCheckedNumbers.contains(randomNumber)) {
                         currentRowCurrentCol = input[i][j];
+                        //check is not last index in the row
                         if(j < columns - 1) {
                             if (input[i][j + 1] == currentRowCurrentCol) {
                                 output[i][j] = randomNumber;
                                 output[i + 1][j] = output[i][j];
                                 alreadyCheckedNumbers.add(output[i][j]);
                             } else {
-                                //(j < columns - 1 && currentRowCurrentCol == nextRowCurrentCol)
                                 output[i][j] = randomNumber;
                                 output[i][j + 1] = output[i][j];
                                 alreadyCheckedNumbers.add(output[i][j]);
+                                //check numbers from 1 to max number in array witch are contains in list
                                 for (int k = 1; k < max; k++) {
                                     if (!alreadyCheckedNumbers.contains(k)) {
                                         newRandomNumber = k;
